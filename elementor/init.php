@@ -1,0 +1,50 @@
+<?php
+
+namespace Samuel;
+
+if (! defined('ABSPATH')) {
+	exit;
+}
+
+use Samuel\Widgets\Elementor_Map;
+
+class Plugin {
+
+	public function __construct() {
+		$this->add_actions();
+	}
+
+	private function add_actions() {
+		add_action('elementor/widgets/widgets_registered', [$this, 'on_widgets_registered']);
+		add_action('elementor/init', [$this, 'elementor_init']);
+	}
+
+	public function on_widgets_registered() {
+		$this->includes();
+		$this->register_widget();
+	}
+
+	private function includes() {
+		sc_include(get_template_directory().'/elementor/widgets');
+	}
+
+	private function register_widget() {
+		\Elementor\Plugin::instance()->widgets_manager->register_widget_type(new Elementor_Map());
+
+	}
+
+	public function elementor_init() {
+		$elementor = \Elementor\Plugin::$instance;
+		$elementor->elements_manager->add_category(
+			'samuel',
+			[
+				'title' => 'Samuel E. Cerezo',
+				'icon' => 'font',
+			],
+			1
+		);
+	}
+
+}
+
+new Plugin();
