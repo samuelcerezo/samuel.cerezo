@@ -55,6 +55,7 @@ function sc_sort_array(&$array, $value) {
 add_action('wp_enqueue_scripts', function() {
 
 	wp_enqueue_style('style', get_template_directory_uri().'/style.css', array(), uniqid());
+	wp_enqueue_style('fonts', get_template_directory_uri().'/fonts/css.php', array(), uniqid());
 	wp_enqueue_style('main', get_template_directory_uri().'/css/main.css', array(), uniqid());
 
 	wp_enqueue_script('fitvid', get_template_directory_uri().'/js/jquery.fitvids.js', array('jquery'), uniqid(), true);
@@ -81,7 +82,15 @@ add_action('elementor/controls/controls_registered', function($controls_registry
 
 	$fonts = $controls_registry->get_control('font')->get_settings('options');
 
-	$fonts = array_merge(array('Adobe Garamond' => 'system'), $fonts);
+	foreach (scandir(get_template_directory().'/fonts') as $file) {
+
+		if (!in_array($file, array('.', '..', 'css.php'))) {
+
+			$fonts = array_merge(array($file => 'system'), $fonts);
+
+		}
+
+	}
 
 	$controls_registry->get_control('font')->set_settings('options', $fonts);
 
