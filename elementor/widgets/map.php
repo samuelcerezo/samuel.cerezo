@@ -25,7 +25,7 @@ class Elementor_Map extends Widget_Base {
 	}
 
 	public function get_categories() {
-		return ['bilnea'];
+		return ['theme'];
 	}
 
 	public function get_script_depends() {
@@ -36,14 +36,14 @@ class Elementor_Map extends Widget_Base {
 		$this->start_controls_section(
 			'section_slides',
 			[
-				'label' => __('Configuration', 'bilnea'),
+				'label' => __('Configuration', 'theme'),
 			]
 		);
 
 		$this->add_control(
 			'autocenter',
 			[
-				'label' => __('Auto center', 'bilnea'),
+				'label' => __('Auto center', 'theme'),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 				'returned_value' => 'yes'
@@ -71,7 +71,7 @@ class Elementor_Map extends Widget_Base {
 		$this->add_responsive_control(
 			'center_padding',
 			[
-				'label' => __('Padding', 'bilnea'),
+				'label' => __('Padding', 'theme'),
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px'],
 			]
@@ -80,7 +80,7 @@ class Elementor_Map extends Widget_Base {
 		$this->add_control(
 			'zoom',
 			[
-				'label' => __('Zoom Level', 'bilnea'),
+				'label' => __('Zoom Level', 'theme'),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 10
@@ -97,7 +97,7 @@ class Elementor_Map extends Widget_Base {
 		$this->add_responsive_control(
 			'height',
 			[
-				'label' => __('Height', 'bilnea'),
+				'label' => __('Height', 'theme'),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 300,
@@ -129,7 +129,7 @@ class Elementor_Map extends Widget_Base {
 		$this->add_control(
 			'scroll',
 			[
-				'label' => __('Prevent Scroll', 'bilnea'),
+				'label' => __('Prevent Scroll', 'theme'),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 				'returned_value' => 'yes'
@@ -139,7 +139,7 @@ class Elementor_Map extends Widget_Base {
 		$this->add_control(
 			'poi',
 			[
-				'label' => __('Show POIs', 'bilnea'),
+				'label' => __('Show POIs', 'theme'),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 				'returned_value' => 'yes'
@@ -149,7 +149,7 @@ class Elementor_Map extends Widget_Base {
 		$this->add_control(
 			'zoom_control',
 			[
-				'label' => __('Show zoom control', 'bilnea'),
+				'label' => __('Show zoom control', 'theme'),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 				'returned_value' => 'yes'
@@ -159,7 +159,7 @@ class Elementor_Map extends Widget_Base {
 		$this->add_control(
 			'zoom_click',
 			[
-				'label' => __('Zoom when double click', 'bilnea'),
+				'label' => __('Zoom when double click', 'theme'),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 				'returned_value' => 'yes'
@@ -169,7 +169,7 @@ class Elementor_Map extends Widget_Base {
 		$this->add_control(
 			'dragging',
 			[
-				'label' => __('Available drag the map', 'bilnea'),
+				'label' => __('Available drag the map', 'theme'),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 				'returned_value' => 'yes'
@@ -179,7 +179,7 @@ class Elementor_Map extends Widget_Base {
 		$this->add_control(
 			'token',
 			[
-				'label' => __('Token', 'bilnea'),
+				'label' => __('Token', 'theme'),
 				'type' => Controls_Manager::TEXT
 			]
 		);
@@ -187,9 +187,9 @@ class Elementor_Map extends Widget_Base {
 		$this->add_control(
 			'style',
 			[
-				'label' => __('Style. <a href="https://www.mapbox.com/studio" target="_blank">Get styles</a>.', 'bilnea'),
+				'label' => __('Style. <a href="https://www.mapbox.com/studio" target="_blank">Get styles</a>.', 'theme'),
 				'type' => Controls_Manager::TEXT,
-				'placeholder' => __('Url', 'bilnea')
+				'placeholder' => __('Url', 'theme')
 			]
 		);
 
@@ -198,7 +198,7 @@ class Elementor_Map extends Widget_Base {
 		$this->start_controls_section(
 			'section_markers',
 			[
-				'label' => __('Markers', 'bilnea'),
+				'label' => __('Markers', 'theme'),
 				'type' => Controls_Manager::SECTION,
 			]
 		);
@@ -217,7 +217,7 @@ class Elementor_Map extends Widget_Base {
 		$repeater->add_control(
 			'icon',
 			[
-				'label' => __('Choose icon', 'bilnea'),
+				'label' => __('Choose icon', 'theme'),
 				'type' => Controls_Manager::MEDIA
 			]
 		);
@@ -225,7 +225,7 @@ class Elementor_Map extends Widget_Base {
 		$repeater->add_responsive_control(
 			'size',
 			[
-				'label' => __('Size', 'bilnea'),
+				'label' => __('Size', 'theme'),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 40,
@@ -244,19 +244,19 @@ class Elementor_Map extends Widget_Base {
 		$repeater->add_control(
 			'position',
 			[
-				'label' => __('Position', 'bilnea'),
+				'label' => __('Position', 'theme'),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'bc',
 				'options' => [
-					'tl' => __('Top left', 'bilnea'),
-					'tc' => __('Top center', 'bilnea'),
-					'tr' => __('Top right', 'bilnea'),
-					'cl' => __('Center left', 'bilnea'),
-					'cc' => __('Center', 'bilnea'),
-					'cr' => __('Center right', 'bilnea'),
-					'bl' => __('Bottom left', 'bilnea'),
-					'bc' => __('Bottom center', 'bilnea'),
-					'br' => __('Bottom right', 'bilnea'),
+					'tl' => __('Top left', 'theme'),
+					'tc' => __('Top center', 'theme'),
+					'tr' => __('Top right', 'theme'),
+					'cl' => __('Center left', 'theme'),
+					'cc' => __('Center', 'theme'),
+					'cr' => __('Center right', 'theme'),
+					'bl' => __('Bottom left', 'theme'),
+					'bc' => __('Bottom center', 'theme'),
+					'br' => __('Bottom right', 'theme'),
 				]
 			]
 		);
@@ -264,7 +264,7 @@ class Elementor_Map extends Widget_Base {
 		$repeater->add_control(
 			'info',
 			[
-				'label' => __('Bubble info', 'bilnea'),
+				'label' => __('Bubble info', 'theme'),
 				'type' => Controls_Manager::TEXTAREA,
 			]
 		);
@@ -272,7 +272,7 @@ class Elementor_Map extends Widget_Base {
 		$repeater->add_control(
 			'bubble_show',
 			[
-				'label' => __('Open on click', 'bilnea'),
+				'label' => __('Open on click', 'theme'),
 				'type' => Controls_Manager::SWITCHER,
 				'default' => 'yes',
 				'returned_value' => 'yes'
@@ -282,7 +282,7 @@ class Elementor_Map extends Widget_Base {
 		$this->add_control(
 			'markers',
 			[
-				'label' => __('Markers', 'bilnea'),
+				'label' => __('Markers', 'theme'),
 				'type' => Controls_Manager::REPEATER,
 				'show_label' => true,
 				'fields' => array_values($repeater->get_controls()),

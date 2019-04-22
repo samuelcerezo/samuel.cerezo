@@ -4,6 +4,10 @@ define('SC_VERSION', 1.0);
 
 add_theme_support('post-thumbnails');
 
+add_action('after_setup_theme', function() {
+	load_theme_textdomain('theme', get_template_directory().'/languages');
+});
+
 register_nav_menus(
 	array(
 		'primary' => 'Menú principal',
@@ -55,12 +59,23 @@ function sc_sort_array(&$array, $value) {
 add_action('wp_enqueue_scripts', function() {
 
 	wp_enqueue_style('style', get_template_directory_uri().'/style.css', array(), uniqid());
-	wp_enqueue_style('fonts', get_template_directory_uri().'/fonts/css.php', array(), uniqid());
 	wp_enqueue_style('main', get_template_directory_uri().'/css/main.css', array(), uniqid());
 
 	wp_enqueue_script('fitvid', get_template_directory_uri().'/js/jquery.fitvids.js', array('jquery'), uniqid(), true);
 	wp_enqueue_script('theme', get_template_directory_uri().'/js/theme.js', array(), uniqid(), true);
-	wp_enqueue_script('main', get_template_directory_uri().'/js/main.js', array('jquery'), uniqid(), true);
+
+	wp_register_script('main', get_template_directory_uri().'/js/main.js', array('jquery'), uniqid(), true);
+
+	wp_localize_script('main', 'main', array(
+		'messages' => array(
+			'errors' => __('There are errors in the form. Please correct them before continuing.', 'theme'),
+			'fill' => __('Fill in the marked fields.', 'theme'),
+			'legal' => __('You must accept the legal notice.', 'theme'),
+			'email' => __('Invalid email address', 'theme')
+		)
+	));
+
+	wp_enqueue_script('main');
 
 	wp_enqueue_script('jquery-slick');
 
