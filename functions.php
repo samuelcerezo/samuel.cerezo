@@ -60,6 +60,7 @@ add_action('wp_enqueue_scripts', function() {
 
 	wp_enqueue_style('style', get_template_directory_uri().'/style.css', array(), uniqid());
 	wp_enqueue_style('main', get_template_directory_uri().'/css/main.css', array(), uniqid());
+	wp_enqueue_style('fonts', get_template_directory_uri().'/fonts/css.php', array(), uniqid());
 
 	wp_enqueue_script('fitvid', get_template_directory_uri().'/js/jquery.fitvids.js', array('jquery'), uniqid(), true);
 	wp_enqueue_script('theme', get_template_directory_uri().'/js/theme.js', array(), uniqid(), true);
@@ -77,7 +78,7 @@ add_action('wp_enqueue_scripts', function() {
 
 	wp_enqueue_script('main');
 
-	wp_enqueue_script('jquery-slick');
+	//wp_enqueue_script('jquery-slick');
 
 });
 
