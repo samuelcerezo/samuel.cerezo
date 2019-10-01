@@ -1,23 +1,23 @@
 @charset 'UTF-8';
 
-/* Tipografías */
-
-@font-face {
-	font-family: '';
-	src: url('../fonts//regular.eot');
-	src: url('../fonts//regular.eot?#iefix') format('embedded-opentype'),
-		 url('../fonts//regular.woff2') format('woff2'),
-		 url('../fonts//regular.woff') format('woff'),
-		 url('../fonts//regular.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
 
 /* Estilos generales */
 
+
 /* Cabecera de página */
 
+
 /* Pie de página */
+
+
+/* Responsive : Tablet */
+
+@media (max-width: 767px) {
+
+}
+
+
+/* Responsive : Móvil */
 
 @media (max-width: 767px) {
 

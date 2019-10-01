@@ -62,7 +62,6 @@ add_action('wp_enqueue_scripts', function() {
 	wp_enqueue_style('main', get_template_directory_uri().'/css/main.css', array(), uniqid());
 	wp_enqueue_style('fonts', get_template_directory_uri().'/fonts/css.php', array(), uniqid());
 
-	wp_enqueue_script('fitvid', get_template_directory_uri().'/js/jquery.fitvids.js', array('jquery'), uniqid(), true);
 	wp_enqueue_script('theme', get_template_directory_uri().'/js/theme.js', array(), uniqid(), true);
 
 	wp_register_script('main', get_template_directory_uri().'/js/main.js', array('jquery'), uniqid(), true);
@@ -143,6 +142,7 @@ function sc_url($arg) {
 add_action('elementor/frontend/the_content', function($content) {
 
 	$content = preg_replace_callback("/{{id-([0-9]+)}}/", "sc_url", $content);
+	$content = preg_replace_callback("/http://{{id-([0-9]+)}}/", "sc_url", $content);
 
 	$replacements = array(
 		'{{year}}' => date('Y')

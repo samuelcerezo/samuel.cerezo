@@ -528,6 +528,9 @@ html[xmlns] .clearfix {
 * html .clearfix {
 	height: 1%;
 }
+.elementor-social-icons-wrapper {
+	line-height: 0;
+}
 
 /* #Media Queries
 ================================================== */

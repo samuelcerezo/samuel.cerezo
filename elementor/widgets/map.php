@@ -333,8 +333,6 @@ class Elementor_Map extends Widget_Base {
 
 		$center = null;
 
-		$settings['center'] = strtr($settings['center'], array('{{coord}}' => get_field('latitud').','.get_field('longitud')));
-
 		if (is_numeric(str_replace(array(',', '.', '-', ' '), '', $settings['center']))) {
 			$center = array('lat' => trim(explode(',', $settings['center'])[1]), 'lng' => trim(explode(',', $settings['center'])[0]));
 		}
@@ -376,7 +374,6 @@ class Elementor_Map extends Widget_Base {
 		if (count($settings['markers']) > 0) {
 			$out .= '		markers: ['."\n";
 			foreach ($settings['markers'] as $marker) {
-				$marker['address'] = strtr($marker['address'], array('{{coord}}' => get_field('latitud').','.get_field('longitud')));
 				$out .= '			{'."\n";
 				$out .= '				position: ['.trim(explode(',', $marker['address'])[1]).', '.trim(explode(',', $marker['address'])[0]).'],'."\n";
 				if ($marker['icon']) {
