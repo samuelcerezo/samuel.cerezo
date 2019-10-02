@@ -142,7 +142,7 @@ function sc_url($arg) {
 add_action('elementor/frontend/the_content', function($content) {
 
 	$content = preg_replace_callback("/{{id-([0-9]+)}}/", "sc_url", $content);
-	$content = preg_replace_callback("/http://{{id-([0-9]+)}}/", "sc_url", $content);
+	$content = preg_replace_callback("/http:\/\/{{id-([0-9]+)}}/", "sc_url", $content);
 
 	$replacements = array(
 		'{{year}}' => date('Y')

@@ -20,43 +20,13 @@ foreach (scandir(get_template_directory().'/fonts') as $family) {
 
 				$italic = false;
 
-				if (strpos($variant, 'italic')) {
+				if (strpos($variant, 'i')) {
 					$italic = true;
 				}
 
-				switch (pathinfo($variant)['filename']) {
+				$weight = intval(pathinfo($variant)['filename']);
 
-					case 'bold':
-					case 'bold-italic':
-						$width = 'bold';
-						break;
-
-					case 'normal':
-					case 'regular':
-					case 'italic':
-						$width = 'normal';
-						break;
-
-					case 'semibold':
-					case 'semibold-italic':
-					case 'semi-bold':
-					case 'semi-bold-italic':
-						$width = '600';
-						break;
-
-					case 'light':
-					case 'light-italic':
-						$width = '300';
-						break;
-
-					case 'thin':
-					case 'thin-italic':
-						$width = '100';
-						break;
-
-				}
-
-				$fonts[$family][$width.($italic ? '-italic' : '')][$ext] = $variant;
+				$fonts[$family][$weight.($italic ? 'i' : '')][$ext] = $variant;
 
 			}
 
@@ -71,15 +41,15 @@ $out = '';
 
 foreach ($fonts as $family => $variant) {
 
-	foreach ($variant as $width => $variant) {
+	foreach ($variant as $weight => $variant) {
 
 		$italic = false;
 
-		if (strpos($width, 'italic')) {
+		if (strpos($weight, 'i')) {
 
 			$italic = true;
 
-			$width = str_replace('-italic', '', $width);
+			$weight = intval($weight);
 
 		}
 
@@ -100,7 +70,7 @@ foreach ($fonts as $family => $variant) {
 
 		}
 
-		$out .= '	font-weight: '.$width.';'."\n";
+		$out .= '	font-weight: '.$weight.';'."\n";
 		$out .= '	font-style: '.($italic ? 'italic' : 'normal').';'."\n";
 		$out .= '}'."\n";
 		$out .= ''."\n";
